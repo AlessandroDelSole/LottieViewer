@@ -1,0 +1,107 @@
+﻿<UserControl x:Class="LottieViewer.LottieViewerToolWindowControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:lottieSharp="clr-namespace:LottieSharp;assembly=LottieSharp"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vsshell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
+             Background="{DynamicResource {x:Static vsshell:VsBrushes.WindowKey}}"
+             Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300"
+             Name="LottieViewerToolWindow">
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" MinHeight="50" />
+        </Grid.RowDefinitions>
+        <lottieSharp:LottieAnimationView Grid.Row="1"
+    x:Name="LottieAnimationView" 
+    DefaultCacheStrategy="None" Visibility="Hidden"
+    VerticalAlignment="Center" AutoPlay="True"
+    HorizontalAlignment="Center"/>
+
+        <StackPanel Orientation="Horizontal" Background="#CCD5F0">
+            <Button Margin="10,3,3,3" Name="OpenJsonButton" Click="OpenJsonButton_Click"
+                    ToolTip="Open animation(s)" Background="Transparent">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/LottieViewer;component/Images/OpenFolder.png" />
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+
+            <Button Margin="10,3,3,3" Name="ClearListButton" Click="ClearListButton_Click"
+                    ToolTip="Clear the animation list" Background="Transparent">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/LottieViewer;component/Images/ClearWindowContent.png" />
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Label Width="150" >
+                <Hyperlink NavigateUri= "https://github.com/ascora/LottieSharp"    Hyperlink.RequestNavigate= "Hyperlink_RequestNavigate">
+                    <TextBlock Text="Based on LottieSharp" />
+                </Hyperlink>
+            </Label>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Background="#CCD5F0" Grid.Row="2">
+            <Button Margin="10,3,3,3" Name="PlayJsonButton" Click="PlayJsonButton_Click"
+                    ToolTip="Play animation" Background="Transparent">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/LottieViewer;component/Images/PlayVideo.png" />
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+            <Button Margin="10,3,3,3" Name="PauseJsonButton" Click="PauseJsonButton_Click"
+                    ToolTip="Pause animation" Background="Transparent">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/LottieViewer;component/Images/Pause.png" />
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+            <Button Margin="10,3,3,3" Name="ResumeJsonButton" Click="ResumeJsonButton_Click"
+                    ToolTip="Resume animation" Background="Transparent">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/LottieViewer;component/Images/Restart.png" />
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+            <Button Margin="10,3,3,3" Name="PrevJsonButton" Click="PrevJsonButton_Click"
+                    ToolTip="Play previous animation" Background="Transparent">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/LottieViewer;component/Images/PreviousFrame.png" />
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            
+            <Button Margin="10,3,3,3" Name="NextJsonButton" Click="NextJsonButton_Click"
+                    ToolTip="Play next animation" Background="Transparent">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/LottieViewer;component/Images/NextFrame.png" />
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+
+
+        </StackPanel>
+        <Separator Grid.Row="3" />
+        <ListBox DisplayMemberPath="Name" Grid.Row="4" Name="AnimationList" 
+                 SelectionChanged="AnimationList_SelectionChanged"/>
+
+    </Grid>
+</UserControl>

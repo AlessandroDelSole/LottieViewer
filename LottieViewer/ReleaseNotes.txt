@@ -1,0 +1,4 @@
+Lottie Viewer Release Notes
+
+Version 1.0
+- First release. Support of multiple animages
